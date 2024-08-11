@@ -13,6 +13,8 @@ def main():
     # 3D→3Dリギング
     image_3d = "data/image_2d.obg"
     rig.main(image_3d)
+
+    print()
     
 
 if __name__ == "__main__":
