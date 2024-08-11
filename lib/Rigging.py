@@ -22,6 +22,3 @@ def main():
     create_armature()
     auto_rig()
     save_file(output_path)
-
-if __name__ == "__main__":
-    main()
