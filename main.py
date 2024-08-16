@@ -1,59 +1,25 @@
-from lib import Cvt3dMod as cvt
-from lib import Rigging as rig
-from IPython.display import display
-import ipywidgets as widgets
-
-# 各ボタンがクリックされたときの動作
-def on_button1_click(b):
-    print("ボタン1がクリックされました！")
-
-def on_button2_click(b):
-    print("ボタン2がクリックされました！")
-
-def on_button3_click(b):
-    print("ボタン3がクリックされました！")
+# from lib import Cvt3dMod as cvt
+# from lib import Rigging as rig
+from lib import DrawPicture as draw
+from PIL import Image 
 
 if __name__ == "__main__":
-    # ボタン1を作成
-    button1 = widgets.Button(
-        description="入力開始",
-        tooltip='ボタン1をクリック',
-        button_style='primary'
-    )
+    # 2D画像の取得(dataファイルにscreenshot.pngを保存)
+    draw.Scribble().run()
 
-    # ボタン2を作成
-    button2 = widgets.Button(
-        description="入力完了",
-        tooltip='ボタン2をクリック',
-        button_style='success'
-    )
-
-    #ボタン3を作成
-    button3 = widgets.Button(
-        description="戻る",
-        tooltip='ボタン3をクリック',
-        button_style='danger'
-    )
-
-    # 2D→3D 
-    image_2d = "lib/dreamgaussian-main/data/test.png"
+    """
+    # 2D画像を3D画像に変換
+    image_2d = "data/screenshot.png"
     cvt.preprocess(image_2d)
     cvt.training_gaussian("data/image_2d_rgba.png")
     #cvt.training_mesh("data/image_2d_rgba.png")
 
-    # 3D→3Dリギング
+    # 3D画像にリギング
     image_3d = "data/image_2d.obg"
     rig.main(image_3d)
-
-    button1.on_click(on_button1_click)
-    button2.on_click(on_button2_click)
-    button3.on_click(on_button3_click)
-
-    # ボタンを横並びに配置するためのボックスを作成
-    box = widgets.HBox([button1, button2, button3])
-
-    # ボタンを表示
-    display(box)
+    image_3d.save("data/image_3d.png")
+    
+    """
 
 
 
