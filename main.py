@@ -1,5 +1,7 @@
 from lib import Cvt3dMod as cvt
 from lib import Rigging as rig
+from IPython.display import display
+import ipywidgets as widgets
 
 def main(): 
 
@@ -19,10 +21,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-    import ipywidgets as widgets
-from IPython.display import display
-
-# 各ボタンがクリックされたときの動作
+    # 各ボタンがクリックされたときの動作
 def on_button1_click(b):
     print("ボタン1がクリックされました！")
 
@@ -61,4 +60,7 @@ box = widgets.HBox([button1, button2, button3])
 
 # ボタンを表示
 display(box)
+
+
+
 
