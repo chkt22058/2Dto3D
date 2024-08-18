@@ -16,9 +16,15 @@ if __name__ == "__main__":
 
     # 3D画像にリギング
     image_3d = "data/image_2d.obg"
-    rig.main(image_3d)
-    image_3d.save("data/image_3d.png")
+    rig.import_model(image_3d)
+    rig.create_armature()
+    rig.auto_rig()
+    rig.save_file("data/rigged_model.blend")
     
+    # 3D画像の表示(確認)
+    img = Image.open("data/rigged_model.blend")
+    img.show()
+
     """
 
 

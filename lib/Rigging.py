@@ -14,6 +14,7 @@ def auto_rig():
 def save_file(filepath):
     bpy.ops.wm.save_as_mainfile(filepath=filepath)
 
+"""
 def main():
     model_path = "path/to/your/model.obj"
     output_path = "path/to/save/your/rigged_model.blend"
@@ -22,3 +23,4 @@ def main():
     create_armature()
     auto_rig()
     save_file(output_path)
+"""
