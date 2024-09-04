@@ -70,3 +70,4 @@ class ScribbleScreen(tk.Frame):
         image.save("data/screenshot.png")
         
         image.show()
+
