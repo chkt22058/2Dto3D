@@ -13,11 +13,9 @@ from torchvision import transforms
 from PIL import Image
 import rembg
 
-
 import subprocess
 
-
-
+'''
 #dreamgaussian--------------------------------------
 
 def preprocess(raw_path, args = []) :
@@ -40,13 +38,24 @@ def training_mesh(processed_path, args = ["--config configs/image.yaml"]) :
     if(result.returncode != 0) :
         print("Standard Error:")
         print(result.stderr)
-'''
+
 def gen_obj(args) :
     command = ["python", "./dreamgaussian/process.py"] + args
     result = subprocess.run(command, capture_output=True, text=True)
     if(result.returncode != 0) :
         print("Standard Error:")                                                                                                                                                                                       
         print(result.stderr)
-'''
+        
+'''        
+#TripoSR-------------------------------------------------------------------
+def gen3d(raw_path = "examples/chair.png", out_path = "output/") :
+    command = ["python", "../TripoSR/run.py"] + raw_path + "--output-dir" + out_path
+    result = subprocess.run(command, capture_output=True, text=True)
+    if(result.returncode != 0) :
+        print("Standard Error:")
+        print(result.stderr)
+
+
+
 
 
