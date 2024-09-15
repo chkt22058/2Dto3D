@@ -48,13 +48,10 @@ def gen_obj(args) :
         
 '''        
 #TripoSR-------------------------------------------------------------------
-def gen3d(raw_path = "examples/chair.png", out_path = "output/") :
-    command = ["python", "./TripoSR/run.py"] + [raw_path] + ["--output-dir"] + [out_path]
-    result = subprocess.run(command, capture_output=True, text=True)
-    if(result.returncode != 0) :
-        print("Standard Error:")
-        print(result.stderr)
-
+def gen3d(raw_path = "TripoSR/examples/chair.png", out_path = "TripoSR/output/") :
+    tsr_path = "./TripoSR/"
+    command = ["python", tsr_path+"run.py", raw_path, "--output-dir", out_path]
+    subprocess.run(command, check = True)
 
 
 
