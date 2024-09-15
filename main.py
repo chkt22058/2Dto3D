@@ -1,11 +1,11 @@
-# from lib import Cvt3dMod as cvt
+from lib import Cvt3dMod as cvt
 # from lib import Rigging as rig
 from lib import DrawPicture as draw
-from PIL import Image 
+from PIL import Image
 
 if __name__ == "__main__":
     # 2D画像の取得(dataファイルにscreenshot.pngを保存)
-    draw.Scribble().run()
+    # draw.Scribble().run()
 
     """
     # 2D画像を3D画像に変換
@@ -26,7 +26,8 @@ if __name__ == "__main__":
     img.show()
 
     """
-
+    
+    cvt.gen3d()
 
 
 
