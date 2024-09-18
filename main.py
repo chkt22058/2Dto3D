@@ -1,33 +1,55 @@
-from lib import Cvt3dMod as cvt
-# from lib import Rigging as rig
-from lib import DrawPicture as draw
-from PIL import Image
+import tkinter as tk
+from Screen.Home import HomeScreen as Home
+from Screen.Scribble import ScribbleScreen as Scri
+from Screen.Gen3D_Load import LoadScreen as Load
+from Screen.Gen3D_Comp import CompleteScreen as Comp
+
+class MainApp(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.title("2D to 3D Application")
+        self.geometry("600x600")
+
+        self.screen1 = Home(self, self.show_ScribbleScreen, self.show_LoadScreen)
+        self.screen2 = Scri(self, self.show_HomeScreen)
+        self.screen3 = Load(self, self.show_CompleteScreen)
+        self.screen4 = Comp(self, self.show_HomeScreen)
+
+        self.show_HomeScreen()
+
+    def show_HomeScreen(self):
+        self.screen1.pack(fill=tk.BOTH, expand=True)
+        self.screen2.pack_forget()
+        self.screen3.pack_forget()
+        self.screen4.pack_forget()
+
+    def show_ScribbleScreen(self):
+        self.screen1.pack_forget()
+        self.screen2.pack(fill=tk.BOTH, expand=True)
+        self.screen3.pack_forget()
+        self.screen4.pack_forget()
+
+    def show_LoadScreen(self):
+        self.screen1.pack_forget()
+        self.screen2.pack_forget()
+        self.screen3.pack(fill=tk.BOTH, expand=True)
+        self.screen4.pack_forget()
+
+        self.screen3.start_long_running_task()
+
+    def show_CompleteScreen(self):
+        self.screen1.pack_forget()
+        self.screen2.pack_forget()
+        self.screen3.pack_forget()
+        self.screen4.pack(fill=tk.BOTH, expand=True)
+    
+    """
+    def show_other_screen(self):
+        self.screen1.pack_forget()
+        self.screen2.pack_forget()
+        self.screen3.pack(fill=tk.BOTH, expand=True)
+    """
 
 if __name__ == "__main__":
-    # 2D画像の取得(dataファイルにscreenshot.pngを保存)
-    # draw.Scribble().run()
-
-    """
-    # 2D画像を3D画像に変換
-    image_2d = "data/screenshot.png"
-    cvt.preprocess(image_2d)
-    cvt.training_gaussian("data/image_2d_rgba.png")
-    #cvt.training_mesh("data/image_2d_rgba.png")
-
-    # 3D画像にリギング
-    image_3d = "data/image_2d.obg"
-    rig.import_model(image_3d)
-    rig.create_armature()
-    rig.auto_rig()
-    rig.save_file("data/rigged_model.blend")
-    
-    # 3D画像の表示(確認)
-    img = Image.open("data/rigged_model.blend")
-    img.show()
-
-    """
-    
-    cvt.gen3d()
-
-
-
+    app = MainApp()
+    app.mainloop()
