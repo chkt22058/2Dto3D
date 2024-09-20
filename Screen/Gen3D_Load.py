@@ -43,7 +43,7 @@ class LoadScreen(tk.Frame):
         thread.start()
 
     def run_gen3d(self):
-        cvt.gen3d()
+        cvt.gen3d("2D_data/screenshot.png")
         self.complete_task()
 
     def complete_task(self):

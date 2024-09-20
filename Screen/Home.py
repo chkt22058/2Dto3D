@@ -1,10 +1,11 @@
 import tkinter as tk
 
 class HomeScreen(tk.Frame):
-    def __init__(self, master, switch_screen1, switch_screen2):
+    def __init__(self, master, switch_screen1, switch_screen2, switch_screen3):
         super().__init__(master)
         self.switch_screen1 = switch_screen1
         self.switch_screen2 = switch_screen2
+        self.switch_screen3 = switch_screen3
         self.create_widgets()
     
     def create_widgets(self):
@@ -17,7 +18,7 @@ class HomeScreen(tk.Frame):
         button_b = tk.Button(self, text="Go to make 3D", command=self.switch_screen2, font=("Helvetica", 24))
         button_b.pack(pady=30)
 
-        button_c = tk.Button(self, text="Go to make Animation", font=("Helvetica", 24))
+        button_c = tk.Button(self, text="Go to make Animation", command=self.switch_screen3, font=("Helvetica", 24))
         button_c.pack(pady=30)
 
         quit_button = tk.Button(self, text="Exit", command=self.quit, font=("Helvetica", 10))
