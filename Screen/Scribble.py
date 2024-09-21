@@ -1,5 +1,5 @@
 import tkinter as tk
-from PIL import ImageGrab
+from PIL import ImageGrab, Image, ImageOps
 
 class ScribbleScreen(tk.Frame):
     def __init__(self, master, switch_screen):
@@ -14,7 +14,7 @@ class ScribbleScreen(tk.Frame):
         self.canvas.grid(row=0, column=0, columnspan=4, sticky="nsew")
 
         # キャプチャ画面ウィジェット作成
-        capture_button = tk.Button(self, text="画面キャプチャ", command=self.capture)
+        capture_button = tk.Button(self, text="画面キャプチャ", command=self.capture_canvas)
         # capture_button.pack(side=tk.BOTTOM, pady=10)
         capture_button.grid(row=2, column=0, padx=10, pady=10)
 
@@ -67,7 +67,8 @@ class ScribbleScreen(tk.Frame):
                                 width=self.width.get())
         self.sx = event.x
         self.sy = event.y
-
+    
+    """
     # 画面の保存
     def capture(self):
         self.update_idletasks()
@@ -85,9 +86,18 @@ class ScribbleScreen(tk.Frame):
         image = ImageGrab.grab(bbox=(x + x_margin1, y + y_margin1, x + width + x_margin2, y + height + y_margin2))
         image.save("./2D_data/screenshot.png")
 
-        """
-        image.show()
-        """
+        
+        #image.show()
+    
+    """
+
     def reset_canvas(self):
         self.canvas.delete("all")  # キャンバス上のすべてのアイテムを削除
         self.canvas.configure(bg="white")  # 背景色を白に設定
+    
+    # キャンバス画面のみキャプチャ
+    def capture_canvas(self):
+        self.canvas.postscript(file="2D_data/temp_canvas.ps", colormode='color')
+        image = Image.open("2D_data/temp_canvas.ps")
+        image = ImageOps.expand(image, border=0, fill='white')
+        image.save("./2D_data/screenshot.png")

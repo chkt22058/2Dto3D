@@ -1,9 +1,9 @@
 import tkinter as tk
-from Screen.Home import HomeScreen as Home
+from Screen.Homeβ import HomeScreen as Home
 from Screen.Scribble import ScribbleScreen as Scri
 from Screen.Gen3D_Load import LoadScreen as Load
-from Screen.Gen3D_Comp import CompleteScreen as Comp
-from Screen.Anima3D import AnimaScreen as Anima 
+from Screen.Gen3D_Compβ import CompleteScreen as Comp
+from Screen.Anima3Dβ import AnimaScreen as Anima 
 
 class MainApp(tk.Tk):
     def __init__(self):
