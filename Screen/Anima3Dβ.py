@@ -152,11 +152,23 @@ class AnimaScreen(tk.Frame):
         # PhotoImageオブジェクトを作成
         photo = ImageTk.PhotoImage(image)
 
+        #--------------------------------------
+
+        # キャンバスのサイズを取得
+        canvas_width = self.canvas.winfo_width()
+        canvas_height = self.canvas.winfo_height()
+
+        # キャンバスの中央に画像を配置する座標を計算
+        x_offset = (canvas_width - image.width) // 2
+        y_offset = (canvas_height - image.height) // 2
+
+        #-----------------------------------------
+
         # キャンバスをクリア
         self.canvas.delete("all")  # これで以前の画像を削除
 
         # キャンバスに新しい画像を表示
-        self.canvas.create_image(0, 0, anchor=tk.NW, image=photo)
+        self.canvas.create_image(x_offset, y_offset, anchor=tk.NW, image=photo)
 
         # 参照を保持（ガベージコレクションを防ぐため）
         self.canvas.image = photo

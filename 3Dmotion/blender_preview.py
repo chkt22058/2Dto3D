@@ -34,6 +34,11 @@ def generate_preview(obj_path, output_path):
     bpy.ops.object.origin_set(type='ORIGIN_GEOMETRY', center='BOUNDS')
     obj.location = (0, 0, 0)
     
+    #----------------------------------------
+    # オブジェクトの回転を設定（x軸、y軸、z軸をそれぞれ指定）
+    obj.rotation_euler = (0 * (3.14159 / 180), 0 * (3.14159 / 180), 0 * (3.14159 / 180))  # ラジアンに変換
+    #----------------------------------------
+
     # カメラを追加
     print("Adding camera")
     bpy.ops.object.camera_add(location=(0, -5, 0))
